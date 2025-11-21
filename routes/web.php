@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\PageController;
 use App\Models\Company;
 use App\Models\Course;
 use Illuminate\Http\Request;
@@ -76,3 +77,7 @@ Route::patch("/update-course/{id}", [CourseController::class, 'update']);
 
 // Admission Route
 Route::get("/admission", [AdmissionController::class, 'table']);
+
+
+Route::get("/student", [PageController::class, 'student'])->name('student');
+Route::get("/student/course", [PageController::class, 'course'])->name('student.course');
