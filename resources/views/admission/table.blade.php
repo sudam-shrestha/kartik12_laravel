@@ -4,7 +4,7 @@
         <div class="p-10">
             <div class="flex items-center justify-between">
                 <h1 class="mb-6 text-3xl font-semibold">Admissions Data</h1>
-                <a href="/course/create" class="bg-[navy] px-4 py-1.5 rounded-3xl text-white">
+                <a href="{{ route('admission.create') }}" class="bg-[navy] px-4 py-1.5 rounded-3xl text-white">
                     add new <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
@@ -14,23 +14,23 @@
                     <tr>
                         <th class="border p-2 bg-gray-200">SN</th>
                         <th class="border p-2 bg-gray-200">Name</th>
-                        <th class="border p-2 bg-gray-200">Price</th>
-                        <th class="border p-2 bg-gray-200">Image</th>
+                        <th class="border p-2 bg-gray-200">Email</th>
+                        <th class="border p-2 bg-gray-200">Phone</th>
+                        <th class="border p-2 bg-gray-200">Course</th>
                         <th class="border p-2 bg-gray-200">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($courses as $i => $course)
+                    @foreach ($admissions as $i => $admission)
                         <tr>
                             <td class="border p-2">{{ ++$i }}</td>
-                            <td class="border p-2">{{ $course->name }}</td>
-                            <td class="border p-2">{{ $course->price }}</td>
-                            <td class="border p-2">
-                                <img src="{{ asset($course->image) }}" class="h-[100px]" alt="">
-                            </td>
+                            <td class="border p-2">{{ $admission->name }}</td>
+                            <td class="border p-2">{{ $admission->email }}</td>
+                            <td class="border p-2">{{ $admission->phone }}</td>
+                            <td class="border p-2">{{ $admission->course->name }}</td>
                             <td class="border p-2">
                                 <div class="flex justify-center gap-4">
-                                    <form action="/delete-course/{{ $course->id }}" method="post">
+                                    <form action="{{ route('admission.delete', $admission->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit">
@@ -38,13 +38,13 @@
                                         </button>
                                     </form>
 
-                                    <a href="/edit-course/{{ $course->id }}">
+                                    <a href="{{ route('admission.edit', $admission->id) }}">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                 </div>
                             </td>
                         </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
 

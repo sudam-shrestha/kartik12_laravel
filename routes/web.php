@@ -76,7 +76,12 @@ Route::patch("/update-course/{id}", [CourseController::class, 'update']);
 
 
 // Admission Route
-Route::get("/admission", [AdmissionController::class, 'table']);
+Route::get("/admission", [AdmissionController::class, 'table'])->name('admission');
+Route::get("/admission/create", [AdmissionController::class, 'create'])->name('admission.create');
+Route::post("/admission/store", [AdmissionController::class, 'store'])->name('admission.store');
+Route::delete("/admission/delete/{id}", [AdmissionController::class, 'delete'])->name('admission.delete');
+Route::get("/admission/edit/{id}", [AdmissionController::class, 'edit'])->name('admission.edit');
+Route::patch("/admission/update/{id}", [AdmissionController::class, 'update'])->name('admission.update');
 
 
 Route::get("/student", [PageController::class, 'student'])->name('student');

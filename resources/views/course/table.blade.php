@@ -15,6 +15,7 @@
                         <th class="border p-2 bg-gray-200">SN</th>
                         <th class="border p-2 bg-gray-200">Name</th>
                         <th class="border p-2 bg-gray-200">Price</th>
+                        <th class="border p-2 bg-gray-200">Admissions</th>
                         <th class="border p-2 bg-gray-200">Image</th>
                         <th class="border p-2 bg-gray-200">Action</th>
                     </tr>
@@ -25,6 +26,16 @@
                             <td class="border p-2">{{ ++$i }}</td>
                             <td class="border p-2">{{ $course->name }}</td>
                             <td class="border p-2">{{ $course->price }}</td>
+                            <td class="border p-2">
+                                @if ($course->admissions->count() > 0)
+                                    {{-- @foreach ($course->admissions as $admission)
+                                        {{ $admission->name }},
+                                    @endforeach --}}
+                                    {{ $course->admissions->pluck('name')->implode(",") }}
+                                @else
+                                    no admissions
+                                @endif
+                            </td>
                             <td class="border p-2">
                                 <img src="{{ asset($course->image) }}" class="h-[100px]" alt="">
                             </td>
